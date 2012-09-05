@@ -23,7 +23,11 @@ minetest.register_node("jumping:trampoline1", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_stone.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay1.png"
+	},
 	groups = {dig_immediate=2, bouncy=30, fall_damage_add_percent=-70},
 })
 
@@ -33,7 +37,11 @@ minetest.register_node("jumping:trampoline2", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_stone.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay2.png"
+	},
 	drop = "jumping:trampoline1",
 	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=50, fall_damage_add_percent=-70},
 })
@@ -44,7 +52,11 @@ minetest.register_node("jumping:trampoline3", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_stone.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay3.png"
+	},
 	drop = "jumping:trampoline1",
 	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=70, fall_damage_add_percent=-70},
 })
@@ -55,7 +67,11 @@ minetest.register_node("jumping:trampoline4", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_stone.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay4.png"
+	},
 	drop = "jumping:trampoline1",
 	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=90, fall_damage_add_percent=-70},
 })
@@ -66,7 +82,11 @@ minetest.register_node("jumping:trampoline5", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_wood.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay5.png"
+	},
 	drop = "jumping:trampoline1",
 	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=100, fall_damage_add_percent=-70},
 })
@@ -77,7 +97,11 @@ minetest.register_node("jumping:trampoline6", {
 	node_box = trampolinebox,
 	selection_box = trampolinebox,
 	paramtype = "light",
-	tiles = {"default_wood.png"},
+	tiles = {
+		"jumping_trampoline_top.png",
+		"jumping_trampoline_bottom.png",
+		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay6.png"
+	},
 	drop = "jumping:trampoline1",
 	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=110, fall_damage_add_percent=-70},
 })
@@ -97,6 +121,10 @@ minetest.register_node("jumping:cushion", {
 	node_box = cushionbox,
 	selection_box = cushionbox,
 	paramtype = "light",
-	tiles = {"default_stone.png"},
+	tiles = {
+		"jumping_cushion_tb.png",
+		"jumping_cushion_tb.png",
+		"jumping_cushion_sides.png"
+	},
 	groups = {dig_immediate=2, disable_jump=1, fall_damage_add_percent=-100},
 })
