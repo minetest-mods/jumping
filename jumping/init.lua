@@ -17,103 +17,29 @@ local cushionbox = {
 		}
 }
 
-minetest.register_node("jumping:trampoline1", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay1.png"
-	},
-	groups = {dig_immediate=2, bouncy=30, fall_damage_add_percent=-70},
-})
+local trampoline_punch = function(pos, node)
+	local id = string.sub(node.name, #node.name)
+	id = id + 1
+	if id == 7 then id = 1 end
+	minetest.env:add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+end
 
-minetest.register_node("jumping:trampoline2", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay2.png"
-	},
-	drop = "jumping:trampoline1",
-	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=50, fall_damage_add_percent=-70},
-})
-
-minetest.register_node("jumping:trampoline3", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay3.png"
-	},
-	drop = "jumping:trampoline1",
-	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=70, fall_damage_add_percent=-70},
-})
-
-minetest.register_node("jumping:trampoline4", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay4.png"
-	},
-	drop = "jumping:trampoline1",
-	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=90, fall_damage_add_percent=-70},
-})
-
-minetest.register_node("jumping:trampoline5", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay5.png"
-	},
-	drop = "jumping:trampoline1",
-	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=100, fall_damage_add_percent=-70},
-})
-
-minetest.register_node("jumping:trampoline6", {
-	description = "Trampoline",
-	drawtype = "nodebox",
-	node_box = trampolinebox,
-	selection_box = trampolinebox,
-	paramtype = "light",
-	tiles = {
-		"jumping_trampoline_top.png",
-		"jumping_trampoline_bottom.png",
-		"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay6.png"
-	},
-	drop = "jumping:trampoline1",
-	groups = {not_in_creative_inventory = 1, dig_immediate=2, bouncy=110, fall_damage_add_percent=-70},
-})
-
-minetest.register_on_punchnode(function (pos, node)
-	if string.find(node.name, "jumping:trampoline") then
-		local id = string.sub(node.name, #node.name) --get number
-		id = id + 1
-		if id == 7 then id = 1 end
-		minetest.env:add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
-	end
-end)
+for i = 1, 6 do
+	minetest.register_node("jumping:trampoline"..i, {
+		description = "Trampoline",
+		drawtype = "nodebox",
+		node_box = trampolinebox,
+		selection_box = trampolinebox,
+		paramtype = "light",
+		on_punch = trampoline_punch,
+		tiles = {
+			"jumping_trampoline_top.png",
+			"jumping_trampoline_bottom.png",
+			"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay"..i..".png"
+		},
+		groups = {dig_immediate=2, bouncy=20+i*20, fall_damage_add_percent=-70},
+	})
+end
 
 minetest.register_node("jumping:cushion", {
 	description = "Cushion",
