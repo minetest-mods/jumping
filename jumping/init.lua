@@ -54,3 +54,21 @@ minetest.register_node("jumping:cushion", {
 	},
 	groups = {dig_immediate=2, disable_jump=1, fall_damage_add_percent=-100},
 })
+
+minetest.register_craft({
+	output = "jumping:trampoline1",
+	recipe = {
+		{"default:wood", "default:wood", "default:wood"},
+		{"default:leaves", "default:leaves", "default:leaves"},
+		{"default:stick", "default:stick", "default:stick"}
+	}
+})
+
+minetest.register_craft({
+	output = "jumping:cushion",
+	recipe = {
+		{"default:leaves", "default:leaves", "default:leaves"},
+		{"default:leaves", "default:leaves", "default:leaves"},
+		{"default:stick", "default:stick", "default:stick"}
+	}
+})
