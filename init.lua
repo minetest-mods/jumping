@@ -19,27 +19,27 @@ local cushionbox = {
 		}
 }
 
--- left click: update trampoline to increase power level
+-- left click: update trampoline to increase bouncy level
 local trampoline_punch = function(pos, node)
 	local id = string.sub(node.name, #node.name) -- get node "id"
 	local meta = minetest.get_meta(pos) -- get meta access
 	if id < "6" then
 		id = id + 1 -- set id one value higher
 		minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id}) -- update trampoline node
-		meta:set_string("infotext", "Power Level: "..id) -- set infotext
+		meta:set_string("infotext", "Bouncy Level: "..id) -- set infotext
 	end
 end
 
--- right click: update trampoline to decrease power level
+-- right click: update trampoline to decrease bouncy level
 local power_decrease = function(pos, node)
 	local id = string.sub(node.name, #node.name) -- get node "id"
 	local meta = minetest.get_meta(pos) -- get meta access
 	id = id - 1 -- set id one value lower
 	minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id}) -- update trampoline node
-	meta:set_string("infotext", "Power Level: "..id) -- set infotext
+	meta:set_string("infotext", "Bouncy Level: "..id) -- set infotext
 end
 
--- register trampolines of power level 2-6
+-- register trampolines of bouncy level 2-6
 for i = 2, 6 do
 	minetest.register_node("jumping:trampoline"..i, {
 		description = "Trampoline",
@@ -51,7 +51,7 @@ for i = 2, 6 do
 		on_rightclick = power_decrease,
 		on_construct = function(pos) -- set meta data on place
 			local meta = minetest.get_meta(pos)
-			meta:set_string("infotext", "Power Level: "..i)
+			meta:set_string("infotext", "Bouncy Level: "..i)
 		end,
 		drop = "jumping:trampoline1",
 		tiles = {
@@ -63,7 +63,7 @@ for i = 2, 6 do
 	})
 end
 
--- register trampoline power level 1
+-- register trampoline bouncy level 1
 minetest.register_node("jumping:trampoline1", {
 	description = "Trampoline",
 	drawtype = "nodebox",
@@ -73,7 +73,7 @@ minetest.register_node("jumping:trampoline1", {
 	on_punch = trampoline_punch,
 	on_construct = function(pos) -- set meta data on place
 		local meta = minetest.get_meta(pos)
-		meta:set_string("infotext", "Power Level: 1")
+		meta:set_string("infotext", "Bouncy Level: 1")
 	end,
 	tiles = {
 		"jumping_trampoline_top.png",
