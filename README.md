@@ -28,8 +28,7 @@ To change the bouncy level, simply left click (punch) any trampoline. This will 
 The steel ingots are used for the legs, while the cushions are obviously acting as the canvas. In fact, when some type of canvas is added, it will be used instead for the trampoline recipe. 
 
 ## Development Repositories
-* **Jeija (original)**: [Jeija/minetest-mod-jumping](http://github.com/Jeija/minetest-mod-jumping)
-* **ENDev15 (active)**: [ENDev15/jumping](http://github.com/ENDev15/jumping)
+* **Jeija **: [Jeija/minetest-mod-jumping](http://github.com/Jeija/minetest-mod-jumping)
 
 ## License and Information
 **License**: [GPLv3](http://www.gnu.org/licenses/gpl-3.0.en.html)
