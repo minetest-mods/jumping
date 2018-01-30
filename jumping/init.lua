@@ -58,8 +58,8 @@ minetest.register_node("jumping:cushion", {
 minetest.register_craft({
 	output = "jumping:trampoline1",
 	recipe = {
-		{"default:wood", "default:wood", "default:wood"},
-		{"default:leaves", "default:leaves", "default:leaves"},
+		{"group:wood", "group:wood", "group:wood"},
+		{"group:leaves", "group:leaves", "group:leaves"},
 		{"default:stick", "default:stick", "default:stick"}
 	}
 })
@@ -67,8 +67,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "jumping:cushion",
 	recipe = {
-		{"default:leaves", "default:leaves", "default:leaves"},
-		{"default:leaves", "default:leaves", "default:leaves"},
+		{"group:leaves", "group:leaves", "group:leaves"},
+		{"group:leaves", "group:leaves", "group:leaves"},
 		{"default:stick", "default:stick", "default:stick"}
 	}
 })
