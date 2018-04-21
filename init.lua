@@ -22,6 +22,7 @@ local trampoline_punch = function(pos, node)
 	id = id + 1
 	if id == 7 then id = 1 end
 	minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+	minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
 end
 
 for i = 1, 6 do
@@ -31,6 +32,9 @@ for i = 1, 6 do
 		node_box = trampolinebox,
 		selection_box = trampolinebox,
 		paramtype = "light",
+		on_construct = function(pos)
+			minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..i)
+		end,
 		on_punch = trampoline_punch,
 		tiles = {
 			"jumping_trampoline_top.png",
