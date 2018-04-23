@@ -47,12 +47,18 @@ for i = 1, 6 do
 		end,
 		on_punch = trampoline_punch,
 		on_rightclick = power_decrease,
+		drop = "jumping:trampoline1",
 		tiles = {
 			"jumping_trampoline_top.png",
 			"jumping_trampoline_bottom.png",
 			"jumping_trampoline_sides.png^jumping_trampoline_sides_overlay"..i..".png"
 		},
-		groups = {dig_immediate=2, bouncy=20+i*20, fall_damage_add_percent=-70},
+		groups = {
+				dig_immediate = 2,
+				bouncy = 20 + i * 20,
+				fall_damage_add_percent = -70,
+				not_in_creative_inventory = ( i > 1 and 1 or nil),
+			},
 	})
 end
 
