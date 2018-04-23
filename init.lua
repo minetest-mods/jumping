@@ -21,7 +21,7 @@ local trampoline_punch = function(pos, node)
 	local id = string.sub(node.name, #node.name)
 	if id < "6" then
 		id = id + 1
-		minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+		minetest.swap_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
 		minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
 	end
 end
@@ -30,7 +30,7 @@ local power_decrease = function(pos, node)
 	local id = string.sub(node.name, #node.name)
 	if id > "1" then
 		id = id - 1
-		minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+		minetest.swap_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
 		minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
 	end
 end
