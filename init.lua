@@ -19,10 +19,20 @@ local cushionbox = {
 
 local trampoline_punch = function(pos, node)
 	local id = string.sub(node.name, #node.name)
-	id = id + 1
-	if id == 7 then id = 1 end
-	minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
-	minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
+	if id < "6" then
+		id = id + 1
+		minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+		minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
+	end
+end
+
+local power_decrease = function(pos, node)
+	local id = string.sub(node.name, #node.name)
+	if id > "1" then
+		id = id - 1
+		minetest.add_node(pos, {name = string.sub(node.name, 1, #node.name - 1)..id})
+		minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..id)
+	end
 end
 
 for i = 1, 6 do
@@ -36,6 +46,7 @@ for i = 1, 6 do
 			minetest.get_meta(pos):set_string("infotext", "Bouncy Level: "..i)
 		end,
 		on_punch = trampoline_punch,
+		on_rightclick = power_decrease,
 		tiles = {
 			"jumping_trampoline_top.png",
 			"jumping_trampoline_bottom.png",
