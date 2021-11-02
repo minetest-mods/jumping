@@ -76,19 +76,22 @@ minetest.register_node("jumping:cushion", {
 	groups = {dig_immediate=2, disable_jump=1, fall_damage_add_percent=-100},
 })
 
-minetest.register_craft({
-	output = "jumping:trampoline1",
-	recipe = {
-		{"jumping:cushion", "jumping:cushion", "jumping:cushion"},
-		{"default:steel_ingot", "", "default:steel_ingot"}
-	}
-})
+-- register recipes if the default mod is present
+if minetest.get_modpath("default") then
+	minetest.register_craft({
+		output = "jumping:trampoline1",
+		recipe = {
+			{"jumping:cushion", "jumping:cushion", "jumping:cushion"},
+			{"default:steel_ingot", "", "default:steel_ingot"}
+		}
+	})
 
-minetest.register_craft({
-	output = "jumping:cushion",
-	recipe = {
-		{"farming:cotton", "group:wool", "farming:cotton"},
-		{"farming:cotton", "group:wool", "farming:cotton"},
-		{"farming:cotton", "farming:cotton", "farming:cotton"}
-	}
-})
+	minetest.register_craft({
+		output = "jumping:cushion",
+		recipe = {
+			{"farming:cotton", "group:wool", "farming:cotton"},
+			{"farming:cotton", "group:wool", "farming:cotton"},
+			{"farming:cotton", "farming:cotton", "farming:cotton"}
+		}
+	})
+end
