@@ -76,7 +76,7 @@ minetest.register_node("jumping:cushion", {
 	groups = {dig_immediate=2, disable_jump=1, fall_damage_add_percent=-100},
 })
 
--- register recipes if the default mod is present
+-- register recipes if the corresponding mods are present
 if minetest.get_modpath("default") then
 	minetest.register_craft({
 		output = "jumping:trampoline1",
@@ -85,7 +85,9 @@ if minetest.get_modpath("default") then
 			{"default:steel_ingot", "", "default:steel_ingot"}
 		}
 	})
+end
 
+if minetest.get_modpath("farming") and minetest.get_modpath("wool") then
 	minetest.register_craft({
 		output = "jumping:cushion",
 		recipe = {
